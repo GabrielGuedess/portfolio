@@ -1,0 +1,54 @@
+name: Cypress
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  build:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Env
+        uses: xom9ikk/dotenv@v2.3.0
+        with:
+          mode: test
+
+      - uses: pnpm/action-setup@v4.1.0
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 10.10.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          node-version: 22.14.0
+
+      - name: Install Dependencies
+        run: pnpm i --no-frozen-lockfile
+
+      - name: Install Cypress
+        run: pnpm cypress install
+
+      - name: Cypress Run
+        uses: cypress-io/github-action@v6.9.2
+        with:
+          build: pnpm build
+          start: pnpm start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 120
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
