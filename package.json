@@ -71,7 +71,7 @@
     "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.26.0",
-    "@graphql-codegen/cli": "5.0.6",
+    "@graphql-codegen/cli": "5.0.7",
     "@graphql-codegen/introspection": "4.0.3",
     "@graphql-codegen/typescript": "^4.1.6",
     "@graphql-codegen/typescript-msw": "^3.0.0",
