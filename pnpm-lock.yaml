@@ -226,8 +226,8 @@ importers:
         specifier: ^8.32.0
         version: 8.36.0(eslint@9.30.1(jiti@2.4.2))(typescript@5.8.3)
       chromatic:
-        specifier: ^11.28.2
-        version: 11.29.0
+        specifier: ^13.0.0
+        version: 13.1.2
       commitizen:
         specifier: ^4.3.1
         version: 4.3.1(@types/node@22.16.2)(typescript@5.8.3)
@@ -4276,6 +4276,18 @@ packages:
 
   chromatic@11.29.0:
     resolution: {integrity: sha512-yisBlntp9hHVj19lIQdpTlcYIXuU9H/DbFuu6tyWHmj6hWT2EtukCCcxYXL78XdQt1vm2GfIrtgtKpj/Rzmo4A==}
+    hasBin: true
+    peerDependencies:
+      '@chromatic-com/cypress': ^0.*.* || ^1.0.0
+      '@chromatic-com/playwright': ^0.*.* || ^1.0.0
+    peerDependenciesMeta:
+      '@chromatic-com/cypress':
+        optional: true
+      '@chromatic-com/playwright':
+        optional: true
+
+  chromatic@13.1.2:
+    resolution: {integrity: sha512-jgVptQabJHOnzmmvLjbtfutREkWGhDDk2gVqMH6N+V7z56oIy4Sd2/U7ZxNvnVFPinZQMSjSdUce4b6JIP64Dg==}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.*.* || ^1.0.0
@@ -14914,6 +14926,8 @@ snapshots:
   chownr@3.0.0: {}
 
   chromatic@11.29.0: {}
+
+  chromatic@13.1.2: {}
 
   chrome-launcher@0.15.2:
     dependencies:
